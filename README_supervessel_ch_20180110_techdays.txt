@@ -76,9 +76,14 @@ make image
 # FOR TECHDAYS to avoid waiting for the image : new terminal
 mkdir test
 cd test
-git clone https://github.com/acastellane/public/fw_2018_0110_1147_noSDRAM_ADKU3_9_helloworld_techdays.bin
+git clone https://github.com/acastellane/public
+cd public
+ls
+#check you have fw_2018_0110_1147_noSDRAM_ADKU3_9_helloworld_techdays.bin
 
 # ===== start of Power8 instance phase ====
+setenv clouduser=SNAP_LABxx
+setenv cloudpwd=SNAP2018xx
 # Upload FPGA Image (.bin file!) to cloud
 upload-image fw_2018_0110_1147_noSDRAM_ADKU3_9_helloworld_techdays.bin
 
