@@ -97,4 +97,18 @@ test-image fw_2018_0110_1147_noSDRAM_ADKU3_9_helloworld_techdays.bin
 ##############################################
 # Deployment step
 # Run SNAP Action on hardware
-# open the created Power8 Machine from your dashboard Instance view
+# open the created Power8 Machine from your dashboard Instance
+
+ssh opuser@IPadress from previous test-image script
+passwd p0weruser
+# Clone CAPI-SNAP repository
+#(from /home/opuser directory)
+git clone https://github.com/open-power/snap.git
+# no need to clone PSLSE as we won't simulate under Power env
+source snap_path.sh
+#check hardware is present :
+lspci|grep accel
+
+#connect the AFU
+snap_maint -vvv
+
