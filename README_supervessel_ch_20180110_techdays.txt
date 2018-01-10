@@ -82,7 +82,7 @@ ls
 #check you have fw_2018_0110_1147_noSDRAM_ADKU3_9_helloworld_techdays.bin
 
 # ===== start of Power8 instance phase ====
-export clouduser=SNAP_LABxx
+export clouduser=SNAP-labxx
 export cloudpwd=SNAP2018xx
 # Upload FPGA Image (.bin file!) to cloud
 upload-image fw_2018_0110_1147_noSDRAM_ADKU3_9_helloworld_techdays.bin
