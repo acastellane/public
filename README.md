@@ -1,2 +1,3 @@
 # public
-public data
+public data 
+These are data used for the supervessel demo at Montpellier
