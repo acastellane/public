@@ -105,10 +105,32 @@ passwd p0weruser
 #(from /home/opuser directory)
 git clone https://github.com/open-power/snap.git
 # no need to clone PSLSE as we won't simulate under Power env
-source snap_path.sh
+
 #check hardware is present :
 lspci|grep accel
 
-#connect the AFU
+#connect the AFU as root (this is not normal, but we have to do it on supervessel as library rights are not opened)
+sudo su
+source snap_path.sh
 snap_maint -vvv
+cd actions/hsl_helloworld/sw
+make
+# Set input if not done already
+echo "Hello World. I love this new experience with SNAP." > /tmp/t1
+snap_helloworld -v -i /tmp/t1 -o /tmp/t2
+# Check results
+cat /tmp/t1
+cat /tmp/t2
+# Hardware simulation mode
+SNAP_CONFIG=CPU ./snap_helloworld -i /tmp/t1 -o /tmp/t2
+SNAP_CONFIG=FPGA ./snap_helloworld -i /tmp/t1 -o /tmp/t3
+# Original text file :
+cat /tmp/t1
+# CPU modified text file :
+cat /tmp/t2
+# FPGA modified text file :
+cat /tmp/t3
+# Exit simulation
+#
+
 
